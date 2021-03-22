@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 
 import { Link } from 'react-router-dom';
+import Search from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -100,6 +101,11 @@ export default function Navbar() {
                         <Link to="/watched" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
                                 Watched
+                            </Button>
+                        </Link>
+                        <Link to="/search" className={classes.icon} style={{ textDecoration: 'none' }}>
+                            <Button varient="contained" color="secondary" size="small">
+                                <Search />
                             </Button>
                         </Link>
                     </IconButton>

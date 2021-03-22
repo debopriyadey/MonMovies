@@ -5,8 +5,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { IconButton } from '@material-ui/core';
+import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
+import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
 
 const useStyles = makeStyles({
     root: {
@@ -40,12 +42,12 @@ export default function MovieCard({ movie }) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
-                    Share
-        </Button>
-                <Button size="small" color="primary">
-                    Learn More
-        </Button>
+                <IconButton aria-label="add to favorites">
+                    <BookmarksOutlinedIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                    <VisibilityOffOutlinedIcon />
+                </IconButton>
             </CardActions>
         </Card>
     );

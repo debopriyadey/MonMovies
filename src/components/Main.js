@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, TextField } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { Grid } from '@material-ui/core';
 
 
 import Navbar from './Navbar';
@@ -9,14 +8,16 @@ import MovieCard from './MovieCard';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexGrow: 1,
     },
 
-    margin: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '18%',
+    container: {
+        justifyContent: "center",
+        marginTop: "3%"
+    },
+
+    card: {
+        margin: '2%',
     },
 
 }));
@@ -24,59 +25,30 @@ const useStyles = makeStyles((theme) => ({
 export default function Main() {
     const classes = useStyles();
 
-    const [query, setQuery] = useState({
-        movie: ""
-    });
+    const [movies, setMovies] = useState([]);
 
-    const [results, setResults] = useState ([]);
-
-    const onChange = (e) => {
-        e.preventDefault();
-        setQuery(e.target.value);
-        
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=620bcff5c65556bbc5abc99f82b7164a&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
-         .then((res) => res.json())
-          .then((data) => {
-              console.log(data);
-              if(!data.errors) {
-                  setResults(data.results);
-              } else {
-                  setResults([]);
-              }
-          });
-    };
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=620bcff5c65556bbc5abc99f82b7164a&language=en-US&page=1&include_adult=false`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setMovies(data.results);
+            });
+    }, [])
 
     return (
         <div className={classes.root}>
             <Navbar />
-            <div className={classes.margin}>
-                <Grid container spacing={2} alignItems="flex-end">
-                    <Grid item>
-                        <SearchIcon />
-                    </Grid>
-                    <Grid item>
-                        <TextField
-                            name="query"
-                            variant="outlined"
-                            autoComplete="query"
-                            id="query"
-                            placeholder="Search the movie"
-                            value={query.movie}
-                            onChange={onChange}
-                        />
-                    </Grid>
-                </Grid>
-            </div>
             <div>
-                {results.length > 0 && (
-                    <ul>
-                        {results.map((movie) => (
-                            <li key={movie.id}>
-                                <MovieCard movie={movie} />
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                <Grid container spacing={3} className={classes.container}>
+                    {movies.length > 0 && (movies.map((movie) => (
+                        <Grid className={classes.card} key={movie.id}>
+                            <MovieCard movie={movie} />
+                        </Grid>
+                    ))
+                    )}
+                </Grid>
+
             </div>
         </div>
     )
