@@ -93,9 +93,9 @@ export default function Navbar() {
                         </h1>
                     </Link>
                     <IconButton>
-                        <Link to="/wishlist" className={classes.icon} style={{ textDecoration: 'none' }}>
+                        <Link to="/watchlater" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
-                                Wishlist
+                                Watchlater
                             </Button>
                         </Link>,
                         <Link to="/watched" className={classes.icon} style={{ textDecoration: 'none' }}>

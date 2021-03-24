@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './components/Main';
 import Search from './components/Search';
 import Watched from './components/Watched';
-import Wishlist from './components/Wishlist';
+import Watchlater from './components/Watchlater';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
                 <Route path="/" exact component={Home} />
                 <Route path="/Search" component={Search} />
                 <Route path="/Watched" component={Watched} />
-                <Route path="/Wishlist" component={Wishlist} />
+                <Route path="/watchlater" component={Watchlater} />
             </Switch>
         </div>
     </Router>

@@ -6,9 +6,15 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+
+import { watchlater } from '../actions/index';
+import { watched } from '../actions/index';
 
 const useStyles = makeStyles({
     root: {
@@ -21,7 +27,22 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie }) {
     const classes = useStyles();
-    //const imgURL =  "https://image.tmdb.org/t/p/w200${movie.poster_path}";
+    const watchlistMovies =useSelector(state => state.watchlater)
+    const watchedMovies =useSelector(state => state.watched)
+
+    
+    const dispatch = useDispatch()
+    const handelWatchlater = (e) => {
+        e.preventDefault();
+        dispatch(watchlater(movie))
+        console.log(watchlistMovies);
+    }
+
+    const handelWatched = (e) => {
+        e.preventDefault();
+        dispatch(watched(movie))
+        console.log(watchedMovies);
+    }
 
     return (
         <Card className={classes.root}>
@@ -29,7 +50,7 @@ export default function MovieCard({ movie }) {
                 <CardMedia
                     className={classes.media}
                     image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                    title="Contemplative Reptile"
+                    title={movie.title}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -42,12 +63,17 @@ export default function MovieCard({ movie }) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <IconButton aria-label="add to favorites">
-                    <BookmarksOutlinedIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <VisibilityOffOutlinedIcon />
-                </IconButton>
+                 <Button onClick={handelWatchlater} >{/* disabled={addedToWatchlater} */}
+                    <IconButton aria-label="add to favorites">
+                        <BookmarksOutlinedIcon />
+                    </IconButton>
+                </Button>
+                 <Button onClick={handelWatched} >{/*disabled={addedToWatched} */}
+                    <IconButton aria-label="share">
+                        <VisibilityOffOutlinedIcon />
+                    </IconButton>
+                </Button>
+
             </CardActions>
         </Card>
     );
