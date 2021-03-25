@@ -1,11 +1,11 @@
 import * as actionTypes from '../reducertype';
 
-const state = {
-    watchlater: [],
-    watched: []
+const initialState = {
+    watchlater: JSON.parse(localStorage.getItem("Watchlater")) === null ? [] : JSON.parse(localStorage.getItem("Watchlater")),
+    watched: JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched"))
 }
 
-const movies = (initialState = state, action) => {
+const movies = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.WATCHLATER:
             return {

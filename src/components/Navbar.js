@@ -1,9 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
-
-import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, IconButton, Button, Badge } from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,13 +12,12 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         textDecoration: "none",
-        flexGrow: '1'
-
+        flexGrow: '1',
     },
 
     appbar: {
         backgroundColor: '#232423',
-        opacity: '0.7',
+        opacity: '0.9',
     },
 
     appbarWrapper: {
@@ -83,24 +83,34 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
     const classes = useStyles();
 
+    const watchlaterMovies = useSelector(state => state.watchlater)
+    const watchedMovies = useSelector(state => state.watched)
+
+    const watchlaterLength = watchlaterMovies.length
+    const watchedLength = watchedMovies.length
+
     return (
         <div className={classes.root} id="header">
             <AppBar className={classes.appbar} elevation={0} >
                 <Toolbar className={classes.appbarWrapper}>
                     <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <h1 className={classes.appbarTitle}>
-                            Mon-<span className={classes.colorText}>Movies</span>
+                            Mon<span className={classes.colorText}>Movies</span>
                         </h1>
                     </Link>
                     <IconButton>
                         <Link to="/watchlater" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
-                                Watchlater
+                                <Badge badgeContent={watchlaterLength} color="primary">
+                                    Watchlater
+                                </Badge>
                             </Button>
                         </Link>,
                         <Link to="/watched" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
-                                Watched
+                                <Badge badgeContent={watchedLength} color="primary">
+                                    Watched
+                                </Badge>
                             </Button>
                         </Link>
                         <Link to="/search" className={classes.icon} style={{ textDecoration: 'none' }}>

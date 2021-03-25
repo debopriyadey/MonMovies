@@ -31,7 +31,6 @@ export default function Main() {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=620bcff5c65556bbc5abc99f82b7164a&language=en-US&page=1&include_adult=false`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setMovies(data.results);
             });
     }, [])

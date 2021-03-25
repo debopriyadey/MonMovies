@@ -7,12 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Button, IconButton } from '@material-ui/core';
-import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from 'react-redux';
 
-
-import { watchlater } from '../actions/index';
 import { watched } from '../actions/index';
 
 const useStyles = makeStyles({
@@ -24,33 +22,12 @@ const useStyles = makeStyles({
     },
 });
 
-export default function MovieCard({ movie }) {
+export default function WatchlaterMovieCard({ movie }) {
     const classes = useStyles();
     //const watchlaterMovies = useSelector(state => state.watchlater)
     //const watchedMovies = useSelector(state => state.watched)
 
     const dispatch = useDispatch()
-
-    const handelWatchlater = (e) => {
-        var savedMovies = JSON.parse(localStorage.getItem("Watchlater")) === null ? [] : JSON.parse(localStorage.getItem("Watchlater"));
-        var flag = true;
-        for (let user of savedMovies) {
-            if (user.id === movie.id) {
-                console.log("present");
-                flag = false;
-                break;
-            } else {
-                continue;
-            }
-        }
-        if (flag) {
-            e.preventDefault();
-            dispatch(watchlater(movie))
-
-        } else {
-            alert("movie already added into watchlater");
-        }
-    }
 
     const handelWatched = (e) => {
         var savedMovies = JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched"));
@@ -73,6 +50,11 @@ export default function MovieCard({ movie }) {
         }
     }
 
+    const handelDeleteWatchlater = (e) => {
+        e.preventDefault();
+        console.log("working");
+    }
+
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -92,16 +74,17 @@ export default function MovieCard({ movie }) {
                 </CardContent>
             </CardActionArea>
             <CardActions disableSpacing>
-                <Button title="add to watchlater" onClick={handelWatchlater} >{/* disabled={addedToWatchlater} */}
-                    <IconButton aria-label="add to favorites">
-                        <BookmarksOutlinedIcon />
+                <Button title="delete from watchlater" onClick={handelDeleteWatchlater}>
+                    <IconButton>
+                        <DeleteIcon />
                     </IconButton>
                 </Button>
-                <Button title="add to watched" onClick={handelWatched} >{/*disabled={addedToWatched} */}
-                    <IconButton aria-label="share">
+                <Button title="add to watched" onClick={handelWatched} >{/* disabled={addedToWatchlater} */}
+                    <IconButton aria-label="add to favorites">
                         <VisibilityOffOutlinedIcon />
                     </IconButton>
                 </Button>
+                
             </CardActions>
         </Card>
     );

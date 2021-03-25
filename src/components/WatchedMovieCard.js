@@ -8,12 +8,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Button, IconButton } from '@material-ui/core';
 import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
-import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from 'react-redux';
 
 
 import { watchlater } from '../actions/index';
-import { watched } from '../actions/index';
 
 const useStyles = makeStyles({
     root: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function MovieCard({ movie }) {
+export default function WatchedMovieCard({ movie }) {
     const classes = useStyles();
     //const watchlaterMovies = useSelector(state => state.watchlater)
     //const watchedMovies = useSelector(state => state.watched)
@@ -52,25 +51,9 @@ export default function MovieCard({ movie }) {
         }
     }
 
-    const handelWatched = (e) => {
-        var savedMovies = JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched"));
-        var flag = true;
-        for (let user of savedMovies) {
-            if (user.id === movie.id) {
-                console.log("present");
-                flag = false;
-                break;
-            } else {
-                continue;
-            }
-        }
-        if (flag) {
-            e.preventDefault();
-            dispatch(watched(movie))
-
-        } else {
-            alert("movie already added into watched");
-        }
+    const handelDeleteWatched = (e) => {
+        e.preventDefault();
+        console.log("working");
     }
 
     return (
@@ -97,9 +80,9 @@ export default function MovieCard({ movie }) {
                         <BookmarksOutlinedIcon />
                     </IconButton>
                 </Button>
-                <Button title="add to watched" onClick={handelWatched} >{/*disabled={addedToWatched} */}
-                    <IconButton aria-label="share">
-                        <VisibilityOffOutlinedIcon />
+                <Button title="delete from watched" onClick={handelDeleteWatched}>
+                    <IconButton>
+                        <DeleteIcon />
                     </IconButton>
                 </Button>
             </CardActions>
