@@ -93,27 +93,27 @@ export default function Navbar() {
         <div className={classes.root} id="header">
             <AppBar className={classes.appbar} elevation={0} >
                 <Toolbar className={classes.appbarWrapper}>
-                    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Link to="/MonMovies" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <h1 className={classes.appbarTitle}>
                             Mon<span className={classes.colorText}>Movies</span>
                         </h1>
                     </Link>
                     <IconButton>
-                        <Link to="/watchlater" className={classes.icon} style={{ textDecoration: 'none' }}>
+                        <Link to="/MonMovies/watchlater" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
                                 <Badge badgeContent={watchlaterLength} color="primary">
                                     Watchlater
                                 </Badge>
                             </Button>
                         </Link>,
-                        <Link to="/watched" className={classes.icon} style={{ textDecoration: 'none' }}>
+                        <Link to="/MonMovies/watched" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
                                 <Badge badgeContent={watchedLength} color="primary">
                                     Watched
                                 </Badge>
                             </Button>
                         </Link>
-                        <Link to="/search" className={classes.icon} style={{ textDecoration: 'none' }}>
+                        <Link to="/MonMovies/search" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
                                 <Search />
                             </Button>

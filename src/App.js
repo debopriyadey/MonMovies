@@ -11,9 +11,9 @@ function App() {
         <div className="App">
             <Switch>
                 <Route path="/MonMovies" exact component={Home} />
-                <Route path="/Search" component={Search} />
-                <Route path="/Watched" component={Watched} />
-                <Route path="/watchlater" component={Watchlater} />
+                <Route path="/MonMovies/Search" component={Search} />
+                <Route path="/MonMovies/Watched" component={Watched} />
+                <Route path="/MonMovies/watchlater" component={Watchlater} />
             </Switch>
         </div>
     </Router>
