@@ -12,7 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from 'react-redux';
 
 
-import { watchlater } from '../actions/index';
+import { deletewatched, watchlater } from '../actions/index';
 
 const useStyles = makeStyles({
     root: {
@@ -25,8 +25,6 @@ const useStyles = makeStyles({
 
 export default function WatchedMovieCard({ movie }) {
     const classes = useStyles();
-    //const watchlaterMovies = useSelector(state => state.watchlater)
-    //const watchedMovies = useSelector(state => state.watched)
 
     const dispatch = useDispatch()
 
@@ -53,7 +51,7 @@ export default function WatchedMovieCard({ movie }) {
 
     const handelDeleteWatched = (e) => {
         e.preventDefault();
-        console.log("working");
+        dispatch(deletewatched(movie));
     }
 
     return (

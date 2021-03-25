@@ -11,7 +11,7 @@ import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from 'react-redux';
 
-import { watched } from '../actions/index';
+import {deletewatchlater , watched } from '../actions/index';
 
 const useStyles = makeStyles({
     root: {
@@ -52,7 +52,7 @@ export default function WatchlaterMovieCard({ movie }) {
 
     const handelDeleteWatchlater = (e) => {
         e.preventDefault();
-        console.log("working");
+        dispatch(deletewatchlater(movie));
     }
 
     return (

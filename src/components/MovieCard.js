@@ -26,8 +26,6 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie }) {
     const classes = useStyles();
-    //const watchlaterMovies = useSelector(state => state.watchlater)
-    //const watchedMovies = useSelector(state => state.watched)
 
     const dispatch = useDispatch()
 

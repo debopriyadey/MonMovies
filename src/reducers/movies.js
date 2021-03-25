@@ -21,6 +21,18 @@ const movies = (state = initialState, action) => {
 
             };
 
+        case actionTypes.DELETEWATCHLATER:
+            return {
+                ...state,
+                watchlater: state.watchlater.filter(movies => movies.id !== action.payload)
+            }
+
+        case actionTypes.DELETEWATCHED:
+            return {
+                ...state,
+                watched: state.watched.filter(movies => movies.id !== action.payload)
+            }
+
         default:
             return state
     }

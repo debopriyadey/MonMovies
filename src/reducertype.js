@@ -1,2 +1,4 @@
 export const WATCHLATER = "WATCHLATER";
 export const WATCHED = "WATCHED";
+export const DELETEWATCHLATER = "DELETEWATCHLATER";
+export const DELETEWATCHED = "DELETEWATCHED";

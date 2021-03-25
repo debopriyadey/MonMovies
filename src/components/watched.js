@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 
 import Navbar from './Navbar';
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Watched() {
     const classes = useStyles();
 
-    const movies = JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched"));
+    const movies = useSelector(state => state.watched)
 
     return (
         <div className={classes.root}>
