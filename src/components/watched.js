@@ -9,12 +9,13 @@ import WatchedMovieCard from './WatchedMovieCard';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        overflow: 'hidden',
+        margin: 0,
     },
 
     container: {
         justifyContent: "center",
-        marginTop: "3%"
+        marginTop: "5%"
     },
 
     card: {

@@ -1,22 +1,96 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, TextField } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-
+import { FormControl, Grid, InputAdornment, TextField } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search'
 
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
+import searchbg from '../images/searchbg.jpg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        overflow: 'hidden',
+        color: "white",
     },
 
+    container: {
+        justifyContent: "center",
+        marginTop: "5%"
+    },
+
+    card: {
+        margin: '2%',
+    },
+
+    search: {
+        width: "100vw",
+        height: "60vh",
+        display: "grid",
+        backgroundImage: `url(${searchbg})`,
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        borderBottom: "solid 10px white",
+        marginLeft: 0,
+        [theme.breakpoints.down('md')]: {
+            height: "40vh",
+        },
+        [theme.breakpoints.down('sm')]: {
+            height: "30vh",
+        },
+        [theme.breakpoints.down('xs')]: {
+            height: "20vh",
+        },
+    },
+
+    searchContent: {
+        alignSelf: "center",
+        textAlign: "center",
+        color: "currentcolor",
+        [theme.breakpoints.down('md')]: {
+            fontSize: "0.6em",
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "0.4em",
+        },
+    },
+
+    inputRoot: {
+        color: 'white',
+        border: '2px solid white',
+        borderRadius: "30px",
+        [theme.breakpoints.down('xs')]: {
+            height: "40px",
+        },
+        [theme.breakpoints.down('sm')]: {
+            height: "35px",
+        },
+        [theme.breakpoints.down('xs')]: {
+            height: "30px",
+        },
+        
+    },
+
+    inputInput: {
+        alignSelf: "center",
+        textAlign: "center",
+        margin: "0 auto",
+        fontSize: "4em",
+        fontWeight: "700",
+        lineHeight: "1",
+        width: "80%",
+        [theme.breakpoints.down('md')]: {
+            fontSize: "3em",
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "2em",
+            fontWeight: "500",
+        },
+    },
+
+
     margin: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '18%',
+        margin: theme.spacing(1),
     },
 
 }));
@@ -49,31 +123,41 @@ export default function Main() {
     return (
         <div className={classes.root}>
             <Navbar />
-            <div className={classes.margin}>
-                <Grid container spacing={2} alignItems="flex-end">
-                    <Grid item>
-                        <SearchIcon />
-                    </Grid>
-                    <Grid item>
-                        <TextField
-                            name="query"
-                            variant="outlined"
-                            autoComplete="query"
-                            id="query"
-                            placeholder="Search the movie"
-                            value={query.movie}
-                            onChange={onChange}
-                        />
-                    </Grid>
+            <div>
+                <Grid container>
+                    <div className={classes.search}>
+                        <div className={classes.searchContent}>
+                            <h1> Search a movie </h1>
+                            <FormControl className={classes.inputInput}>
+                                <TextField
+                                    name="query"
+                                    variant="outlined"
+                                    autoComplete="query"
+                                    id="query"
+                                    value={query.movie}
+                                    onChange={onChange}
+                                    InputProps={{
+                                        endAdornment: <InputAdornment position="end"> <h1 style={{color: "white"}}><SearchIcon /> </h1></InputAdornment>,
+                                        className: classes.inputRoot
+                                    }}
+                                    color="secondary"
+                                    //size="small"
+                                />
+                            </FormControl>
+                        </div>
+
+                    </div>
                 </Grid>
             </div>
             <div>
-                {results.length > 0 && ( results.map((movie) => (
-                        <Grid key={movie.id}>
+                <Grid container spacing={3} className={classes.container}>
+                    {results.length > 0 && (results.map((movie) => (
+                        <Grid className={classes.card} key={movie.id}>
                             <MovieCard movie={movie} />
                         </Grid>
                     ))
-                )}
+                    )}
+                </Grid>
             </div>
         </div>
     )

@@ -16,8 +16,12 @@ const useStyles = makeStyles((theme) => ({
     },
 
     appbar: {
+        
         backgroundColor: '#232423',
         opacity: '0.9',
+        [theme.breakpoints.down('xs')]: {
+            height: '5%',
+        },
     },
 
     appbarWrapper: {
@@ -30,16 +34,20 @@ const useStyles = makeStyles((theme) => ({
     appbarTitle: {
         flexGrow: '1',
         [theme.breakpoints.down('xs')]: {
-            fontSize: '20px'
+            marginTop: "0",
+            fontSize: '15px'
         }
     },
 
     icon: {
         color: '#fff',
         fontSize: '1.5rem',
-        padding: theme.spacing(1),
+    },
+
+    iconSize: {
         [theme.breakpoints.down('xs')]: {
-            fontSize: '18px'
+            marginTop: "0",
+            fontSize: '8px'
         }
     },
 
@@ -55,29 +63,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
 
-    title: {
-        color: '#fff',
-        fontSize: '4.5rem',
-        fontFamily: 'Lemonada',
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '30px'
-        }
-    },
-
-    subtitle: {
-        fontSize: '4rem',
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '27px'
-        }
-    },
-
-    goDown: {
-        color: '#295ed9',
-        fontSize: '3.6rem',
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '40px'
-        }
-    },
 }));
 
 export default function Navbar() {
@@ -101,21 +86,27 @@ export default function Navbar() {
                     <IconButton>
                         <Link to="/MonMovies/watchlater" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
-                                <Badge badgeContent={watchlaterLength} color="primary">
-                                    Watchlater
-                                </Badge>
+                                <h3 className={classes.iconSize}>
+                                    <Badge badgeContent={watchlaterLength} color="primary">
+                                        Watchlater
+                                    </Badge>
+                                </h3>
                             </Button>
                         </Link>,
                         <Link to="/MonMovies/watched" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
-                                <Badge badgeContent={watchedLength} color="primary">
-                                    Watched
-                                </Badge>
+                                <h3 className={classes.iconSize}>
+                                    <Badge badgeContent={watchedLength} color="primary">
+                                        Watched
+                                    </Badge>
+                                </h3>
                             </Button>
                         </Link>
                         <Link to="/MonMovies/search" className={classes.icon} style={{ textDecoration: 'none' }}>
                             <Button varient="contained" color="secondary" size="small">
-                                <Search />
+                                <h3 className={classes.iconSize}>
+                                    <Search />
+                                </h3>
                             </Button>
                         </Link>
                     </IconButton>
