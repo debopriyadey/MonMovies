@@ -10,5 +10,4 @@ Here you can search any movie and save it in your watchlater or watched. The mov
  `github` - to host the website
 
 #
-
-## Link to the website - [MonMovies](https://debopriyadey.github.io/MonMovies/)
+### Link to the website - [MonMovies](https://debopriyadey.github.io/MonMovies/)
