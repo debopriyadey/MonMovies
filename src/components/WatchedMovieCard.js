@@ -21,6 +21,14 @@ const useStyles = makeStyles({
     media: {
         height: 140,
     },
+    title: {
+        height: 65,
+    },
+    desc: {
+        //minheight: 345,
+        height: 145,
+        overflowY: "scroll",
+    },
 });
 
 export default function WatchedMovieCard({ movie }) {
@@ -63,11 +71,11 @@ export default function WatchedMovieCard({ movie }) {
                     title={movie.title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
                         {movie.title}
                     </Typography>
                     <small>{movie.release_date}</small>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="p" className={classes.desc}>
                         {movie.overview}
                     </Typography>
                 </CardContent>
