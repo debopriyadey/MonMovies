@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     desc: {
         //minheight: 345,
         height: 145,
-        overflowY: "scroll",
+        overflowY: "overlay",
     },
 });
 
