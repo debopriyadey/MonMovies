@@ -2,7 +2,8 @@ import * as actionTypes from '../reducertype';
 
 const initialState = {
     watchlater: JSON.parse(localStorage.getItem("Watchlater")) === null ? [] : JSON.parse(localStorage.getItem("Watchlater")),
-    watched: JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched"))
+    watched: JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched")),
+    currentMovie: null
 }
 
 const movies = (state = initialState, action) => {
@@ -25,12 +26,18 @@ const movies = (state = initialState, action) => {
             return {
                 ...state,
                 watchlater: state.watchlater.filter(movies => movies.id !== action.payload)
-            }
+            };
 
         case actionTypes.DELETEWATCHED:
             return {
                 ...state,
                 watched: state.watched.filter(movies => movies.id !== action.payload)
+            };
+        
+        case actionTypes.CURRENTMOVIE:
+            return {
+                ...state,
+                currentMovie: action.payload
             }
 
         default:

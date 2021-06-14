@@ -5,7 +5,7 @@ import SearchIcon from '@material-ui/icons/Search'
 
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
-import searchbg from '../images/searchbg.jpg'
+import searchbg from '../images/searchbg.webp'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -141,7 +141,6 @@ export default function Main() {
                                         className: classes.inputRoot
                                     }}
                                     color="secondary"
-                                    //size="small"
                                 />
                             </FormControl>
                         </div>

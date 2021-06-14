@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
-import heroimage from '../images/heroimage.jpg';
+import heroimage from '../images/heroimage.webp';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -78,6 +78,8 @@ export default function Main() {
                 setMovies(data.results);
             });
     }, [])
+
+    console.log(movies)
 
     return (
         <div className={classes.root}>

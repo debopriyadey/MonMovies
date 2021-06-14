@@ -9,9 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import { Button, IconButton } from '@material-ui/core';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
+import InfoIcon from '@material-ui/icons/Info';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import {deletewatchlater , watched } from '../actions/index';
+import { currentmovie } from '../actions/index';
 
 const useStyles = makeStyles({
     root: {
@@ -28,6 +31,9 @@ const useStyles = makeStyles({
         height: 145,
         overflowY: "overlay",
     },
+    infoButton: {
+        marginLeft: 'auto',
+    }
 });
 
 export default function WatchlaterMovieCard({ movie }) {
@@ -36,6 +42,8 @@ export default function WatchlaterMovieCard({ movie }) {
     //const watchedMovies = useSelector(state => state.watched)
 
     const dispatch = useDispatch()
+    const history = useHistory()
+
 
     const handelWatched = (e) => {
         var savedMovies = JSON.parse(localStorage.getItem("Watched")) === null ? [] : JSON.parse(localStorage.getItem("Watched"));
@@ -61,6 +69,13 @@ export default function WatchlaterMovieCard({ movie }) {
     const handelDeleteWatchlater = (e) => {
         e.preventDefault();
         dispatch(deletewatchlater(movie));
+    }
+
+    const handelDetail = (e) => {
+        e.preventDefault();
+
+        dispatch(currentmovie(movie))
+        history.push(`/MonMovies/currentmovie/${movie.id}`);
     }
 
     return (
@@ -92,7 +107,11 @@ export default function WatchlaterMovieCard({ movie }) {
                         <VisibilityOffOutlinedIcon />
                     </IconButton>
                 </Button>
-                
+                <Button title="Detail" onClick={handelDetail} className={classes.infoButton} >{/*disabled={addedToWatched} */}
+                    <IconButton aria-label="share">
+                        <InfoIcon />
+                    </IconButton>
+                </Button>
             </CardActions>
         </Card>
     );

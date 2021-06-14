@@ -9,10 +9,13 @@ import Typography from '@material-ui/core/Typography';
 import { Button, IconButton } from '@material-ui/core';
 import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
+import InfoIcon from '@material-ui/icons/Info';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
 import { deletewatched, watchlater } from '../actions/index';
+import { currentmovie } from '../actions/index';
 
 const useStyles = makeStyles({
     root: {
@@ -29,12 +32,17 @@ const useStyles = makeStyles({
         height: 145,
         overflowY: "overlay",
     },
+    infoButton: {
+        marginLeft: 'auto',
+    }
 });
 
 export default function WatchedMovieCard({ movie }) {
     const classes = useStyles();
 
     const dispatch = useDispatch()
+    const history = useHistory()
+
 
     const handelWatchlater = (e) => {
         var savedMovies = JSON.parse(localStorage.getItem("Watchlater")) === null ? [] : JSON.parse(localStorage.getItem("Watchlater"));
@@ -60,6 +68,13 @@ export default function WatchedMovieCard({ movie }) {
     const handelDeleteWatched = (e) => {
         e.preventDefault();
         dispatch(deletewatched(movie));
+    }
+
+    const handelDetail = (e) => {
+        e.preventDefault();
+
+        dispatch(currentmovie(movie))
+        history.push(`/MonMovies/currentmovie/${movie.id}`);
     }
 
     return (
@@ -89,6 +104,11 @@ export default function WatchedMovieCard({ movie }) {
                 <Button title="delete from watched" onClick={handelDeleteWatched}>
                     <IconButton>
                         <DeleteIcon />
+                    </IconButton>
+                </Button>
+                <Button title="Detail" onClick={handelDetail} className={classes.infoButton} >{/*disabled={addedToWatched} */}
+                    <IconButton aria-label="share">
+                        <InfoIcon />
                     </IconButton>
                 </Button>
             </CardActions>

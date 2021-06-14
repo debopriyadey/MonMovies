@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Typist from 'react-typist';
 
 import Navbar from './Navbar';
-import WatchedMovieCard from './WatchedMovieCard';
+import MovieCard from './MovieCard';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,7 +50,7 @@ export default function Watched() {
                     <Grid container spacing={3} className={classes.container}>
                         {movies.length > 0 && (movies.map((movie) => (
                             <Grid className={classes.card} key={movie.id}>
-                                <WatchedMovieCard movie={movie} />
+                                <MovieCard movie={movie} />
                             </Grid>
                         ))
                         )}

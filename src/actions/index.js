@@ -28,7 +28,6 @@ function removeWatchlater(movies) {
             var existingEntries = JSON.parse(localStorage.getItem("Watchlater"));
             existingEntries.splice(movieIndex, 1);
             localStorage.setItem("Watchlater", JSON.stringify(existingEntries));
-            console.log("removed");
             break;
         } else {
             movieIndex += 1;
@@ -45,7 +44,6 @@ function removeWatched(movies) {
             var existingEntries = JSON.parse(localStorage.getItem("Watched"));
             existingEntries.splice(movieIndex, 1);
             localStorage.setItem("Watched", JSON.stringify(existingEntries));
-            console.log("removed");
             break;
         } else {
             movieIndex += 1;
@@ -85,5 +83,13 @@ export const deletewatched = (movies) => {
     return {
         type: actionTypes.DELETEWATCHED,
         payload: movies.id
+    }
+}
+
+export const currentmovie = (movie) => {
+    sessionStorage.setItem("currentmovie", JSON.stringify(movie));
+    return {
+        type: actionTypes.CURRENTMOVIE,
+        payload: movie
     }
 }

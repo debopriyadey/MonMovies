@@ -4,6 +4,7 @@ import Main from './components/Main';
 import Search from './components/Search';
 import Watched from './components/Watched';
 import Watchlater from './components/Watchlater';
+import  CurrentMovie from './components/CurrentMovie';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/MonMovies/search" component={Search} />
                 <Route path="/MonMovies/watched" component={Watched} />
                 <Route path="/MonMovies/watchlater" component={Watchlater} />
+                <Route path="/MonMovies/currentmovie" component={CurrentMovie} />
             </Switch>
         </div>
     </Router>
