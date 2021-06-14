@@ -41,10 +41,10 @@ const useStyles = makeStyles({
         maxWidth: 291,
     },
     media: {
-        height: 245,
+        height: 300,
     },
     title: {
-        height: 65,
+        minHeight: 65,
     },
     // desc: {
     //     //minheight: 345,
