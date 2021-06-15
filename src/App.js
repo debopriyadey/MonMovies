@@ -8,7 +8,7 @@ import  CurrentMovie from './components/CurrentMovie';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/MonMovies" >
         <div className="App">
             <Switch>
                 <Route path="/MonMovies" exact component={Home} />
