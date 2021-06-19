@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/MonMovies/static/css/main.8999e0ea.chunk.css",
-    "main.js": "/MonMovies/static/js/main.4567487d.chunk.js",
-    "main.js.map": "/MonMovies/static/js/main.4567487d.chunk.js.map",
+    "main.js": "/MonMovies/static/js/main.b1098479.chunk.js",
+    "main.js.map": "/MonMovies/static/js/main.b1098479.chunk.js.map",
     "runtime-main.js": "/MonMovies/static/js/runtime-main.75259f49.js",
     "runtime-main.js.map": "/MonMovies/static/js/runtime-main.75259f49.js.map",
-    "static/js/2.45335a4f.chunk.js": "/MonMovies/static/js/2.45335a4f.chunk.js",
-    "static/js/2.45335a4f.chunk.js.map": "/MonMovies/static/js/2.45335a4f.chunk.js.map",
+    "static/js/2.da8046a9.chunk.js": "/MonMovies/static/js/2.da8046a9.chunk.js",
+    "static/js/2.da8046a9.chunk.js.map": "/MonMovies/static/js/2.da8046a9.chunk.js.map",
     "index.html": "/MonMovies/index.html",
     "static/css/main.8999e0ea.chunk.css.map": "/MonMovies/static/css/main.8999e0ea.chunk.css.map",
-    "static/js/2.45335a4f.chunk.js.LICENSE.txt": "/MonMovies/static/js/2.45335a4f.chunk.js.LICENSE.txt",
+    "static/js/2.da8046a9.chunk.js.LICENSE.txt": "/MonMovies/static/js/2.da8046a9.chunk.js.LICENSE.txt",
     "static/media/heroimage.65a03675.webp": "/MonMovies/static/media/heroimage.65a03675.webp",
     "static/media/searchbg.2cba9826.webp": "/MonMovies/static/media/searchbg.2cba9826.webp"
   },
   "entrypoints": [
     "static/js/runtime-main.75259f49.js",
-    "static/js/2.45335a4f.chunk.js",
+    "static/js/2.da8046a9.chunk.js",
     "static/css/main.8999e0ea.chunk.css",
-    "static/js/main.4567487d.chunk.js"
+    "static/js/main.b1098479.chunk.js"
   ]
 }
